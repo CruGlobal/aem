@@ -19,7 +19,8 @@
 node.default[:apache][:enable_default_site] = false
 
 include_recipe "apache2"
-include_recipe "apache2::mod_ssl"
+#issue with amazon linux "Error executing action `install` on resource 'package[mod_ssl]'"
+#include_recipe "apache2::mod_ssl"
 include_recipe "apache2::mod_expires"
 
 aem_dispatcher 'mod_dispatcher.so' do
