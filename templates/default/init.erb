@@ -19,7 +19,7 @@
 <% end %>
 CQ_JVM_OPTS="<%= (@jvm_opts.keys.sort.map {|k| k if @jvm_opts[k]}).compact.join " " %>"
 
-CQ_JAR_OPTS="<%= @jar_opts.join " " %> -Djava.io.tmpdir=<% @default_context %>/tmp"
+CQ_JAR_OPTS="<%= @jar_opts.join " " %> -Djava.io.tmpdir=<%= @default_context %>/tmp"
 
 DEFAULT_CQ_CONTEXT=<%= @default_context %>
 
