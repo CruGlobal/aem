@@ -75,31 +75,26 @@ else
   end
 end
 
-#Change admin password
-aem_user node[:aem][:publish][:admin_user] do
-  password node[:aem][:publish][:new_admin_password]
-  admin_user node[:aem][:publish][:admin_user]
-  admin_password node[:aem][:publish][:admin_password]
-  port node[:aem][:publish][:port]
-  aem_version node[:aem][:version]
-  action :set_password
-  only_if { node[:aem][:publish][:new_admin_password] }
-  not_if { node[:aem][:publish][:new_admin_password] == node[:aem][:publish][:admin_password] }
-  notifies :run, 'ruby_block[Store new admin password in node]', :immediately
-end
-
-ruby_block 'Store new admin password in node' do
-  block do
-    node.set[:aem][:publish][:admin_password] = node[:aem][:publish][:new_admin_password]
+unless node[:aem][:publish][:new_admin_password].nil?
+  # Change admin password
+  aem_user node[:aem][:publish][:admin_user] do
+    password node[:aem][:publish][:new_admin_password]
+    admin_user node[:aem][:publish][:admin_user]
+    admin_password node[:aem][:publish][:admin_password]
+    port node[:aem][:publish][:port]
+    aem_version node[:aem][:version]
+    action :set_password
   end
-  action :nothing
+
+  node.set[:aem][:publish][:admin_password] = node[:aem][:publish][:new_admin_password]
+  node.set[:aem][:publish][:new_admin_password] = nil
 end
 
 #delete the privileged users from geometrixx, if they're still there.
 node[:aem][:geometrixx_priv_users].each do |user|
   aem_user user do
     admin_user node[:aem][:publish][:admin_user]
-    admin_password node[:aem][:publish][:admin_password]
+    admin_password lazy { node[:aem][:publish][:admin_password] }
     port node[:aem][:publish][:port]
     aem_version node[:aem][:version]
     path "/home/users/geometrixx"
@@ -141,7 +136,7 @@ node[:aem][:publish][:deploy_pkgs].each do |pkg|
     package_url pkg[:url]
     update pkg[:update]
     user node[:aem][:publish][:admin_user]
-    password node[:aem][:publish][:admin_password]
+    password lazy { node[:aem][:publish][:admin_password] }
     port node[:aem][:publish][:port]
     group_id pkg[:group_id]
     recursive pkg[:recursive]
@@ -154,12 +149,13 @@ end
 #Create cache flush agents
 aem_replicator "create_flush_agents" do
   local_user node[:aem][:publish][:admin_user]
-  local_password node[:aem][:publish][:admin_password]
+  local_password lazy { node[:aem][:publish][:admin_password] }
   local_port node[:aem][:publish][:port]
   remote_hosts node[:aem][:publish][:cache_hosts]
   dynamic_cluster node[:aem][:publish][:find_cache_hosts_dynamically]
   cluster_name node[:aem][:cluster_name]
   cluster_role node[:aem][:dispatcher][:cluster_role]
+  aem_version node[:aem][:version]
   type :flush_agent
   action :add
 end
@@ -167,12 +163,13 @@ end
 #Set up cache flush agents
 aem_replicator "flush_cache" do
   local_user node[:aem][:publish][:admin_user]
-  local_password node[:aem][:publish][:admin_password]
+  local_password lazy { node[:aem][:publish][:admin_password] }
   local_port node[:aem][:publish][:port]
   remote_hosts node[:aem][:publish][:cache_hosts]
   dynamic_cluster node[:aem][:publish][:find_cache_hosts_dynamically]
   cluster_name node[:aem][:cluster_name]
   cluster_role node[:aem][:dispatcher][:cluster_role]
+  aem_version node[:aem][:version]
   type :flush
   action :add
 end
