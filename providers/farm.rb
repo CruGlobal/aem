@@ -48,6 +48,7 @@ action :add do
     cluster_name = new_resource.cluster_name
     cluster_type = new_resource.cluster_type
     timeout = new_resource.render_timeout
+    ipv4 = new_resource.render_ipv4
 
     search_criteria = AEM::Helpers.build_cluster_search_criteria(role, cluster_name)
     renders = search(:node, search_criteria)
@@ -63,6 +64,7 @@ action :add do
         :hostname => r[:ipaddress],
         :port => r[:aem][cluster_type][:port],
         :timeout => timeout
+        :ipv4    => ipv4
       }
     end
     #Don't ever return an empty renders list, or apache won't start and
@@ -73,6 +75,7 @@ action :add do
         :hostname => "localhost",
         :port => "4503",
         :timeout => "1"
+        :ipv4    => "1"
       }
     end
   end
