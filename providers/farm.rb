@@ -63,8 +63,8 @@ action :add do
         :name => r[:fqdn],
         :hostname => r[:ipaddress],
         :port => r[:aem][cluster_type][:port],
-        :timeout => timeout
-        :ipv4    => ipv4
+        :timeout => timeout,
+        :ipv4 => ipv4
       }
     end
     #Don't ever return an empty renders list, or apache won't start and
@@ -74,8 +74,8 @@ action :add do
         :name => "NoClusterMembersFound",
         :hostname => "localhost",
         :port => "4503",
-        :timeout => "1"
-        :ipv4    => "1"
+        :timeout => "1",
+        :ipv4 => "1"
       }
     end
   end
