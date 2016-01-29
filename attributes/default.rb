@@ -210,7 +210,7 @@ default[:aem][:dispatcher][:cache_root] = '/opt/communique/dispatcher/cache'
 default[:aem][:dispatcher][:client_headers] = ['*']
 default[:aem][:dispatcher][:virtual_hosts] = ['*']
 default[:aem][:dispatcher][:renders] = [{ name: 'publish_rend', hostname: '127.0.0.1',
-                                          port: '4503', timeout: '0' }]
+                                          port: '4503', timeout: '0', ipv4: '0' }]
 default[:aem][:dispatcher][:filter_rules] = {
   '0001' => '/type "deny"  /glob "*"',
   '0002' => '/type "deny"  /glob "GET *.*[0-9].json*"',

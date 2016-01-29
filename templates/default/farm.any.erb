@@ -23,6 +23,7 @@
           /hostname "<%= render[:hostname] %>"
           /port "<%= render[:port] %>"
           /timeout "<%= render[:timeout] %>"
+          /ipv4 "<%= render[:ipv4] %>"
         }
     <% end %>
     }
@@ -99,7 +100,7 @@
     <% end %>
     }
   <% end %>
-  
+
 # Failover configuration
   /health_check
     {
