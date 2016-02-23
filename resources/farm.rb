@@ -38,4 +38,4 @@ attribute :cluster_name, kind_of: String, default: nil
 attribute :cluster_role, kind_of: String, default: nil
 attribute :cluster_type, kind_of: String, default: nil
 attribute :render_timeout, kind_of: Integer, default: 0
-attribute :render_ipv4, :kind_of: Integer, :default: 0
+attribute :render_ipv4, :kind_of: Integer, default: 0
