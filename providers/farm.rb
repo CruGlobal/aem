@@ -64,7 +64,7 @@ action :add do
         name: r[:fqdn],
         hostname: r[:ipaddress],
         port: r[:aem][cluster_type][:port],
-        timeout: timeout
+        timeout: timeout,
         ipv4: ipv4
       }
     end
@@ -75,7 +75,7 @@ action :add do
         name: 'NoClusterMembersFound',
         hostname: 'localhost',
         port: '4503',
-        timeout: '1'
+        timeout: '1',
         ipv4: '1'
       }
     end
