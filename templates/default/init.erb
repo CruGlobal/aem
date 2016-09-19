@@ -14,6 +14,10 @@
 # more info.
 #---------------------------------------------------------------------
 
+<%- if node['aem']['apps_env'] != nil -%>
+. <%= @apps_env %>
+<%- end -%>
+
 <% @aem_options.keys.sort.each do |key| %>
 <%=   key %>=<%= @aem_options[key] %>
 <% end %>
