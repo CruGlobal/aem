@@ -22,7 +22,7 @@ action :add do
   vars = {}
   service_name = new_resource.service_name
   var_list = [
-    :aem_options, :default_context, :runnable_jar, :base_dir, :jvm_opts, :jar_opts
+    :aem_options, :default_context, :runnable_jar, :base_dir, :jvm_opts, :jar_opts, :apps_env
   ]
 
   # take value passed to provider, or node attribute

@@ -54,7 +54,7 @@ aem_init 'aem-publish' do
   base_dir node[:aem][:publish][:base_dir]
   jvm_opts node[:aem][:publish][:jvm_opts]
   jar_opts node[:aem][:publish][:jar_opts]
-  apps_evn node[:aem][:apps_env]
+  apps_env node[:aem][:apps_env]
   action :add
 end
 
