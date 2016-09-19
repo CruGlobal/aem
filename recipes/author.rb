@@ -54,6 +54,7 @@ aem_init 'aem-author' do
   base_dir node[:aem][:author][:base_dir]
   jvm_opts node[:aem][:author][:jvm_opts]
   jar_opts node[:aem][:author][:jar_opts]
+  apps_evn node[:aem][:apps_env]
   action :add
 end
 
