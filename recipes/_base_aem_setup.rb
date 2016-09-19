@@ -20,7 +20,7 @@
 case node['platform']
 when 'debian', 'ubuntu'
   curl_package = 'libcurl4-openssl-dev'
-when 'redhat', 'centos', 'fedora'
+when 'redhat', 'centos', 'fedora', 'amazon'
   curl_package = 'libcurl-devel'
 end
 
