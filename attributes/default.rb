@@ -248,6 +248,8 @@ default[:aem][:dispatcher][:statistics] = [
   { name: 'html', glob: '*.html' },
   { name: 'others', glob: '*' }
 ]
+default[:aem][:dispatcher][:enable_vanity] = false
+default[:aem][:dispatcher][:enable_failover] = false
 default[:aem][:dispatcher][:site_name] = '00Dispatcher'
 default[:aem][:dispatcher][:server_name] = node[:fqdn]
 default[:aem][:dispatcher][:server_aliases] = []
