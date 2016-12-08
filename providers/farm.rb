@@ -29,7 +29,8 @@ action :add do
                ignore_url_params: :hash,
                cache_root: :scalar, farm_dir: :scalar,
                farm_name: :scalar, cache_opts: :array,
-               session_mgmt: :hash, enable_session_mgmt: :scalar :enable_vanity :enable_failover}
+               session_mgmt: :hash, enable_session_mgmt: :scalar,
+               enable_vanity: :scalar, enable_failover: :scalar}
   empty = { array: [], hash: {}, scalar: nil }
 
   # take value passed to provider, or node attribute, or empty
