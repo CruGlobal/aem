@@ -101,6 +101,16 @@
     }
   <% end %>
 
+  <% if @enable_vanity then %>
+  #Enabling Access to Vanity URLs - /vanity_urls
+  /vanity_urls
+    {
+     /url "/libs/granite/dispatcher/content/vanityUrls.html"
+     /file "/tmp/vanity_urls"
+    /delay 300
+    }
+  <% end %>
+<% if @enable_failover then %>
 # Failover configuration
   /health_check
     {
@@ -111,4 +121,5 @@
    /numberOfRetries "5"
    /unavailablePenalty "1"
    /failover "1"
+<% end %>
   }
