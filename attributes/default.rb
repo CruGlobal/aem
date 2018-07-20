@@ -208,6 +208,7 @@ default[:aem][:dispatcher][:no_server_header] = '0'
 default[:aem][:dispatcher][:decline_root] = '0'
 default[:aem][:dispatcher][:use_processed_url] = '0'
 default[:aem][:dispatcher][:pass_error] = '0'
+default[:aem][:dispatcher][:keep_alive_time] = '60'
 default[:aem][:dispatcher][:farm_name] = nil
 default[:aem][:dispatcher][:cache_root] = '/opt/communique/dispatcher/cache'
 default[:aem][:dispatcher][:client_headers] = ['*']
