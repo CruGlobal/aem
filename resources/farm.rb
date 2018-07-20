@@ -38,6 +38,8 @@ attribute :cluster_name, kind_of: String, default: nil
 attribute :cluster_role, kind_of: String, default: nil
 attribute :cluster_type, kind_of: String, default: nil
 attribute :render_timeout, kind_of: Integer, default: 0
+attribute :farm_template_cookbook, kind_of: String, default: 'aem'
+attribute :farm_template_source, kind_of: String, default: 'farm.any.erb'
 attribute :render_ipv4, kind_of: Integer, default: 0
 attribute :enable_vanity, kind_of: [TrueClass, FalseClass], default: false
 attribute :enable_failover, kind_of: [TrueClass, FalseClass], default: false
